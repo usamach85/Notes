@@ -10,6 +10,7 @@ class App extends Component {
 
     this.state = {
       items: JSON.parse(localStorage.getItem("items")) || [],
+      filteredItems: [],
       showAddNewItemPage: false,
       itemToEdit: null,
       itemToView: null,
@@ -23,14 +24,17 @@ class App extends Component {
     this.handleView = this.handleView.bind(this);
   }
 
-  handleSearch = (name, date) => {
-    const filteredItems = this.state.items.filter(
-      (item) =>
-        item.name.toLowerCase().includes(name.toLowerCase()) &&
-        item.createdDate.includes(date)
-    );
-
-    this.setState({ items: filteredItems });
+  handleSearch = (name) => {
+    if (name) {
+      const filteredItems = this.state.items.filter(
+        (item) =>
+          item.name.toLowerCase().includes(name.toLowerCase()) ||
+          item.price.toLowerCase().includes(name.toLowerCase()) 
+      );
+      this.setState({ filteredItems }); // Update only the filteredItems state
+    } else {
+      this.setState({ filteredItems: [] }); // Reset filteredItems state to empty array
+    }
   };
 
   componentWillMount() {
@@ -100,12 +104,13 @@ class App extends Component {
   };
 
   render() {
+    const { filteredItems, showAddNewItemPage, itemToEdit, itemToView } = this.state;
     return (
       <div className="App">
         {!this.state.showAddNewItemPage && (
           <TableWithSearch
             onAddNotesClick={this.toggleAddNewItemPage}
-            data={this.state.items}
+            data={filteredItems.length > 0 ? filteredItems : this.state.items}
             handleEdit={this.handleEdit}
             handleView={this.handleView}
             handleDelete={this.onDelete}

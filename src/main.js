@@ -98,7 +98,7 @@ const TableWithSearch = (props) => {
               <tr>
                 <th className="createdDate">Created Date</th>
                 <th className="title">Name</th>
-                <th className="body">Price</th>
+                <th className="body">Notes</th>
                 <th className="action">Action</th>
               </tr>
             </thead>

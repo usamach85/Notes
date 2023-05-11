@@ -32,6 +32,12 @@ class Notes extends Component {
   onSubmit(event) {
     event.preventDefault();
 
+    // Add validation to check for empty fields
+    if (!this.titleInput.value.trim() || !this.bodyInput.value.trim()) {
+      alert("Both fields are required.");
+      return;
+    }
+
     if (this.props.itemToEdit) {
       // If itemToEdit exists, call the onEditSubmit method to update the existing note
       this.props.onEditSubmit(
@@ -65,6 +71,7 @@ class Notes extends Component {
     const isViewMode = !!itemToView; 
 
     return (
+      <div className="row">
       <form onSubmit={this.onSubmit}>
         <div className="row">
           <div className="col-12">
@@ -92,6 +99,7 @@ class Notes extends Component {
           </button>
         </div>
       </form>
+      </div>
     );
   }
 }
