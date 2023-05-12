@@ -8,6 +8,8 @@ const TableWithSearch = (props) => {
   const [sortOrder, setSortOrder] = useState("asc");
   const [sortedData, setSortedData] = useState(props.data);
   const { handleSearch, onAddNotesClick, handleEdit, handleDelete } = props;
+  const [isAlertOpen, setAlertOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
 
   useEffect(() => {
     let newData = [...props.data];
@@ -41,6 +43,21 @@ const TableWithSearch = (props) => {
 
   const handleSearchClick = () => {
     handleSearch(name, date);
+  };
+
+  //Delete Confirmation Alert
+  const DeleteConfirmation = ({ isOpen, onConfirm, onCancel }) => {
+    if (!isOpen) {
+      return null;
+    }
+
+    return (
+      <div className="delete-confirmation">
+        <h5 className="mb-5">Are you sure you want to delete this item?</h5>
+        <button className="mx-2 btn-danger btn-confirm" onClick={onConfirm}>Yes</button>
+        <button className="btn-success btn-confirm" onClick={onCancel}>No</button>
+      </div>
+    );
   };
 
   return (
@@ -143,7 +160,10 @@ const TableWithSearch = (props) => {
                           </button>
                           <button
                             className="mx-2"
-                            onClick={() => handleDelete(row.name)}
+                            onClick={() => {
+                              setItemToDelete(row.name);
+                              setAlertOpen(true);
+                            }}
                           >
                             <i className="fas fa-trash"></i>
                           </button>
@@ -156,8 +176,17 @@ const TableWithSearch = (props) => {
             </div>
           </div>
         </div>
-        {/* Cards ends here */}
       </section>
+      <DeleteConfirmation
+        isOpen={isAlertOpen}
+        onConfirm={() => {
+          handleDelete(itemToDelete);
+          setAlertOpen(false);
+        }}
+        onCancel={() => {
+          setAlertOpen(false);
+        }}
+      />
     </div>
   );
 };

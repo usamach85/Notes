@@ -31,7 +31,6 @@
   }
 }
 
-
 .content {
   max-width: 1280px;
   width: 100%;
@@ -46,9 +45,9 @@
 }
 
 .card-header h1 {
-text-transform: uppercase;
-font-size: 22px;
-margin: 0%;
+  text-transform: uppercase;
+  font-size: 22px;
+  margin: 0%;
 }
 
 .btn-add {
@@ -61,7 +60,8 @@ margin: 0%;
 .btn-add:hover {
   opacity: 0.8;
 }
-.search-field,.data-sorting {
+.search-field,
+.data-sorting {
   position: relative;
   margin-bottom: 20px;
   float: left;
@@ -69,30 +69,33 @@ margin: 0%;
 }
 .form-group {
   width: 48%;
-    float: left;
-    text-align: left;
-    margin-right: 5px;
-    margin-bottom: 20px !important;
+  float: left;
+  text-align: left;
+  margin-right: 5px;
+  margin-bottom: 20px !important;
 }
 
 .form-select {
   display: block;
-    width: 100%;
-    height: calc(1.5em + 0.75rem + 2px);
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    -o-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  -webkit-transition: border-color 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .input-add {
@@ -103,10 +106,43 @@ margin: 0%;
   margin-bottom: 15px;
 }
 
-.btn-submit, .btn-cancel {
+.btn-submit,
+.btn-cancel {
   padding: 8px 25px !important;
   margin-bottom: 15px;
   width: 48%;
   margin-right: 5px;
+}
+/* Delete Confirmation CSS */
+.delete-confirmation {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 40px;
+  border: 1px solid black;
+  z-index: 9999;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  -webkit-transition: border-color 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+}
 
+.btn-confirm {
+  position: relative;
+  padding: 8px 15px !important;
+  margin-bottom: 15px;
+  width: 30%;
+  margin-right: 5px;
+  border-radius: 10px;
 }
