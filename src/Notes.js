@@ -32,6 +32,12 @@ class Notes extends Component {
   onSubmit(event) {
     event.preventDefault();
 
+    // Add validation to check for empty fields
+    if (!this.titleInput.value.trim() || !this.bodyInput.value.trim()) {
+      alert("Both fields are required.");
+      return;
+    }
+
     if (this.props.itemToEdit) {
       // If itemToEdit exists, call the onEditSubmit method to update the existing note
       this.props.onEditSubmit(
@@ -61,37 +67,58 @@ class Notes extends Component {
   }
 
   render() {
-    const { itemToView } = this.props; 
-    const isViewMode = !!itemToView; 
+    const { itemToView } = this.props;
+    const isViewMode = !!itemToView;
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <div className="row">
-          <div className="col-12">
-            <h3 className="mb-2">Add Notes</h3>
-            <input
-            className="input-title"
-              placeholder="Title"
-              ref={(titleInput) => (this.titleInput = titleInput)}
-              defaultValue={itemToView ? itemToView.name : ""} 
-              readOnly={isViewMode}
-            />
+
+      <section className="content">
+        <div className="card">
+          <div className="card-header">
+            <h1 className="card-title">Add New Note</h1>
           </div>
-          <div className="col-12 note-col">
-            <textarea
-              className="input-note"
-              placeholder="Note"
-              ref={(bodyInput) => (this.bodyInput = bodyInput)}
-              defaultValue={itemToView ? itemToView.price : ""}
-              readOnly={isViewMode} 
-            />
+          <div className="card-body">
+          <div className="row">
+        <div className="col-12">
+          <div className="d-flex justify-content-center">
+          <form onSubmit={this.onSubmit}>
+              <div className="row">
+                <div className="col-12 text-center">
+            
+                  <input
+                    className="form-control input-add"
+                    placeholder="Title"
+                    ref={(titleInput) => (this.titleInput = titleInput)}
+                    defaultValue={itemToView ? itemToView.name : ""}
+                    readOnly={isViewMode}
+                  />
+                </div>
+                <div className="col-12 note-col text-center">
+                  <textarea
+                    className="form-control input-note"
+                    placeholder="Note"
+                    ref={(bodyInput) => (this.bodyInput = bodyInput)}
+                    defaultValue={itemToView ? itemToView.price : ""}
+                    readOnly={isViewMode}
+                  />
+                </div>
+                <div className="col-12 text-center d-flex justify-content-center">
+                  {!isViewMode && (
+                    <button className="btn btn-add btn-submit">Save</button>
+                  )}
+                  <button className="btn btn-secondary btn-cancel" onClick={this.onClose}>
+                    Close
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-          {!isViewMode && <button className="btn button-add">Save</button>}{" "}
-          <button className="btn button-close " onClick={this.onClose}>
-            Close 
-          </button>
         </div>
-      </form>
+      </div>
+          </div>
+        </div>
+      </section>
+   
     );
   }
 }

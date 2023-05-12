@@ -1,6 +1,5 @@
 import React from "react";
 import Notes from "./Notes";
-import Item from "./Item";
 
 const AddNewItemPage = ({ onAdd }) => {
   return (
