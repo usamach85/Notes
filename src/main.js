@@ -119,7 +119,7 @@ const TableWithSearch = (props) => {
 
           <div className="row justify-content-center">
           <div className="col-12 w-100">
-            <table className="table table-light table-striped">
+            <table className="table table-light table-bordered table-striped">
               <thead className="thead-dark">
                 <tr>
                   
